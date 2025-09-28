@@ -49,13 +49,13 @@ class MyBot(commands.Bot):
         """Log when slash commands are used"""
         user = interaction.user
         guild = interaction.guild.name if interaction.guild else "DM"
-        logger.info(f"Command used: /{command.name} by {user.name}#{user.discriminator} in {guild}")
+        logger.info(f"[/{command.name}] {user.name} in {guild} (UID: {user.id})")
 
     async def on_app_command_error(self, interaction: discord.Interaction, error):
         """Log slash command errors"""
         user = interaction.user
         guild = interaction.guild.name if interaction.guild else "DM"
-        logger.error(f"Command error: /{interaction.command.name if interaction.command else 'unknown'} by {user.name}#{user.discriminator} in {guild} - {error}")
+        logger.error(f"Command error: /{interaction.command.name if interaction.command else 'unknown'} by {user.name} in {guild} - {error}")
 
 def on_shutdown():
     """Called when the bot shuts down"""
